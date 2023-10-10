@@ -14,11 +14,13 @@ public class GetCoordinatesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GetCoordinatesApplication.class, args);
-		getCoordinates();
+
+		Adresse adresse = new Adresse("Leopoldstraße", 5, "Karlsruhe", "BW", "76133", "DE");
+		getCoordinates(adresse);
 	}
 
-	private static void getCoordinates() {
-		String url = getUrl();
+	private static void getCoordinates(Adresse adresse) {
+		String url = getUrl(adresse);
 		WebClient.Builder builder = WebClient.builder();
 
 		String geoData = builder.build()
@@ -46,15 +48,13 @@ public class GetCoordinatesApplication {
 		System.out.println("---------------------------------------------------");
 	}
 
-	private static String getUrl() {
-		Adresse adresse = new Adresse("Leopoldstraße", 5, "Karlsruhe", "BW", "76133", "DE");
-
-		String strasse = String.valueOf(adresse.strasse);
-		int hausnummer = adresse.hausnummer;
-		String stadt = adresse.stadt;
-		String bundesland = adresse.bundesland;
-		String postleitzahl = adresse.plz;
-		String land = adresse.land;
+	private static String getUrl(Adresse adresse) {
+		String strasse = adresse.getStrasse();
+		int hausnummer = adresse.getHausnummer();
+		String stadt = adresse.getStadt();
+		String bundesland = adresse.getBundesland();
+		String postleitzahl = adresse.getPlz();
+		String land = adresse.getLand();
 
 		return String.format(
 				"https://geocode.maps.co/search?street=%s+%d&city=%s&state=%s&postalcode=%s&country=%s",

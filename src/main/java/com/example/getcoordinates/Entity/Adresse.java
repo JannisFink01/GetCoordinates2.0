@@ -32,4 +32,36 @@ public class Adresse {
         this.plz = plz;
         this.land = land;
     }
+
+    public String getStrasse() {
+        return strasse;
+    }
+
+    public int getHausnummer() {
+        return hausnummer;
+    }
+
+    public String getStadt() {
+        return stadt;
+    }
+
+    public String getPlz() {
+        return plz;
+    }
+
+    public String getLand() {
+        return land;
+    }
+
+    public int getLeistung() {
+        return leistung;
+    }
+
+    public Koordinaten getKoordinaten() {
+        return koordinaten;
+    }
+
+    public String getBundesland() {
+        return bundesland;
+    }
 }
